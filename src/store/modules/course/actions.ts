@@ -1,8 +1,5 @@
-export function add(title){
-    return {
-      type: 'ADD_COURSE',
-      payload: {
-        title
-      },
-    };
-  }
+import { action } from 'typesafe-actions';
+
+import { CourseTypes, Course } from './types';
+
+  export const add = (data: Course) => action(CourseTypes.ADD_COURSE, { data });

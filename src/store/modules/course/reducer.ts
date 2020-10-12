@@ -1,17 +1,22 @@
-const INITIAL_STATE = {
+import { Reducer } from 'redux';
+import { CourseState, CourseTypes } from './types';
+
+const INITIAL_STATE: CourseState = {
     data: [
-        'React.js',
-        'React Native'
+        { id: 0, title: 'React.js'},
+        { id: 1, title: 'React native'}
     ],
+    loading: false,
+    error: false
 }
 
-function courses(state = INITIAL_STATE, action){
+const reducer: Reducer<CourseState> = (state = INITIAL_STATE, action) => {
     switch(action.type){
-        case 'ADD_COURSE':
-            return {...state, data: [...state.data, action.payload.title]};
+        case CourseTypes.ADD_COURSE:
+            return {...state, data: [...state.data, action.payload.data]};
         default:
         return state;
     }
 }
 
-export default courses
+export default reducer;
